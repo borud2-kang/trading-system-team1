@@ -47,8 +47,8 @@ def test_buy_without_login_raises_exception(system):
 
 
 def test_successful_buy(system, mock_driver):
-    system.login(id="aa", password=1234)
     system.driver = mock_driver
+    system.login(id="aa", password=1234)
 
     ret = system.buy("005930", price=70000, count=10)
     assert ret is True
