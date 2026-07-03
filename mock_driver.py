@@ -7,11 +7,13 @@ class MockDriver(DriverInterface):
     def __init__(self):
         pass
 
-    def login(self, username: str, password: str) -> None:
-        pass
+    def login(self, id: str, password: str) -> bool:
+        print(id + ' login success')
+        return True
 
-    def buy(self, code: str, price: int, amount: int) -> None:
-        pass
+    def buy(self, stock_code:str, count:int, price:float ) -> bool :
+        print(stock_code + ' : Buy stock ( ' + str(price) + ' * ' + str(count))
+        return True
 
     def sell(self, code: str, price: int, amount: int) -> None:
         pass

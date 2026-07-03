@@ -11,7 +11,7 @@ def test_mock_driver_is_driver_interface():
 def test_mock_driver_login_success():
     driver = MockDriver()
 
-    assert driver.login(id="aa", password=1234) is True
+    assert driver.login(id="aa", password="1234") is True
 
 
 def test_mock_driver_can_return_price():
