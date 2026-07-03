@@ -20,5 +20,13 @@ class AutoTradingSystem:
             raise Exception("로그인이 필요합니다.")
         return self.driver.buy(stock_code, count, price)
 
-    def sell(self, stock_code, price, count):
-        pass
+
+    def sell(self, ticker, price, count):
+        if not self.is_logined:
+            raise Exception("로그인이 필요합니다.")
+
+        return self.driver.sell(ticker, price, count)
+
+
+    def get_price(self, ticker):
+        return self.driver.get_price(ticker)

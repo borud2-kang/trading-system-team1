@@ -61,7 +61,7 @@ def test_sell_without_login_raises_exception(system):
 
 def test_successful_sell(system, mock_driver):
     system.driver = mock_driver
-    system.login(id="aa", password=1234)
+    system.is_logined = True
 
     ret = system.sell("005930", price=70000, count=10)
     assert ret is True
