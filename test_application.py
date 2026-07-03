@@ -69,4 +69,4 @@ def test_successful_sell(system, mock_driver):
 
 def test_get_price(system, mock_driver):
     system.driver = mock_driver
-    assert system.get_price("005930") == 5000
+    assert system.get_price("005930") == 50000
