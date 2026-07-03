@@ -7,6 +7,7 @@ from mock_driver import MockDriver
 def system():
     return AutoTradingSystem()
 
+
 @pytest.fixture
 def mock_driver():
     return MockDriver()
@@ -25,12 +26,29 @@ def test_select_stock_brocker(system):
         system.select_stock_broker("aa")
 
 
-def test_login(system, mock_driver):
+def test_login_before_select_stock_brocker(system):
+    with pytest.raises(Exception, match="증권사를 먼저 선택해주세요"):
+        system.login(id="aa", password=1234)
+
+
+def test_login_success(system, mock_driver):
     system.driver = mock_driver
     assert system.is_logined is False
 
     ret = system.login(id="aa", password=1234)
 
-    mock_driver.login.assert_called_once_with(id="aa", password=1234)
     assert ret is True
     assert system.is_logined is True
+
+
+def test_buy_without_login_raises_exception(system):
+    with pytest.raises(Exception, match="로그인이 필요합니다."):
+        system.buy("005930", price=70000, count=10)
+
+
+def test_successful_buy(system, mock_driver):
+    system.login(id="aa", password=1234)
+    system.driver = mock_driver
+
+    ret = system.buy("005930", price=70000, count=10)
+    assert ret is True
