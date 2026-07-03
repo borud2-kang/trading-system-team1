@@ -28,14 +28,14 @@ def test_select_stock_brocker(system):
 
 def test_login_before_select_stock_brocker(system):
     with pytest.raises(Exception, match="증권사를 먼저 선택해주세요"):
-        system.login(id="aa", password=1234)
+        system.login(id="aa", password="1234")
 
 
 def test_login_success(system, mock_driver):
     system.driver = mock_driver
     assert system.is_logined is False
 
-    ret = system.login(id="aa", password=1234)
+    ret = system.login(id="aa", password="1234")
 
     assert ret is True
     assert system.is_logined is True
