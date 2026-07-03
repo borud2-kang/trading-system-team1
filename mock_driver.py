@@ -15,7 +15,7 @@ class MockDriver(DriverInterface):
         print(stock_code + ' : Buy stock ( ' + str(price) + ' * ' + str(count))
         return True
 
-    def sell(self, stock_code: str, price: int, amount: int) -> bool:
+    def sell(self, stock_code: str, price: int, count: int) -> bool:
         print('[MOCK]' + stock_code + ' sell stock ( price : ' + str(price) + ' ) * ( count : ' + str(count) + ')')
         return True
 
