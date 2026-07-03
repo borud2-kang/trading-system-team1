@@ -65,3 +65,8 @@ def test_successful_sell(system, mock_driver):
 
     ret = system.sell("005930", price=70000, count=10)
     assert ret is True
+
+
+def test_get_price(system, mock_driver):
+    system.driver = mock_driver
+    assert system.get_price("005930") == 5000
