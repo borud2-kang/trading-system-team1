@@ -3,7 +3,7 @@ from mock_driver import MockDriver
 
 class AutoTradingSystem:
     def __init__(self):
-        self.driver = MockDriver()
+        self.driver = None
         self.is_logined = False
 
     def login(self, id, password) -> bool:
